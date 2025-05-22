@@ -216,6 +216,17 @@
         <td>24/9/2021</td>
     </tr>
 </table>
+  <script>
+function searchTable() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const rows = document.querySelectorAll("#dataTable tbody tr");
+
+  rows.forEach(row => {
+    const rowText = row.textContent.toLowerCase();
+    row.style.display = rowText.includes(input) ? "" : "none";
+  });
+}
+</script>
       </div>
     </section>
 
