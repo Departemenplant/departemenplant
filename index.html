@@ -116,143 +116,40 @@
   </style>
 </head>
 <body>
- <!-- Input pencarian -->
-<input type="text" id="searchInput" placeholder="Cari..." onkeyup="searchTable()">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DataTables Sorting</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
 
-<!-- Tabel data -->
-<table id="dataTable">
+<h2>Daftar Nilai Siswa</h2>
+
+<table id="myTable" class="display">
   <thead>
     <tr>
-        <td>WE0041</td>
-        <td>BIGBLUE</td>
-        <td>WELDING MACHINE MILLER QUOTE :026/dgm/vii/17 SN MH090945R</td>
-        <td>MH090945R</td>
-        <td>23/8/2017</td>
+      <th>Nama</th>
+      <th>Nilai</th>
     </tr>
-    <tr>
-        <td>WE0049</td>
-        <td>BIGBLUE</td>
-        <td>WELDING MACHINE - MILLER BIG BLUE 600X</td>
-        <td>MK 240062R</td>
-        <td>1/5/2020</td>
-    </tr>
-    <tr>
-        <td>CM0021</td>
-        <td>C6012</td>
-        <td>COMPRESSOR AIR C60-12- DLT0704</td>
-        <td>WCA1F1513D1A30057</td>
-        <td>7/6/2014</td>
-    </tr>
-    <tr>
-        <td>CM0017</td>
-        <td>L22</td>
-        <td>AIR COMP STATIONERRY L22 OIL INJECTED COMPRESSOR (</td>
-        <td>CD10008722002</td>
-        <td>15/8/2015</td>
-    </tr>
-    <tr>
-        <td>HH0972</td>
-        <td>#REF!</td>
-        <td>Tools Box Assy</td>
-        <td>0</td>
-        <td>1/8/2018</td>
-    </tr>
-    <tr>
-        <td>WC0036</td>
-        <td>#REF!</td>
-        <td>Welding Machine DC Arc Unistick 630C Complete With</td>
-        <td>0</td>
-        <td>1/10/2020</td>
-    </tr>
-    <tr>
-        <td>TX0456</td>
-        <td>#REF!</td>
-        <td>Hydraulic Torque Wrench Torc Pn.TTS 5 Drive 1.1/2&quot;</td>
-        <td>0</td>
-        <td>20/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0035</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0036</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0037</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0038</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0039</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0040</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0041</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0042</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0043</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
-    <tr>
-        <td>TB0044</td>
-        <td>#REF!</td>
-        <td>Tool Box Set Facom Tipe Metrik (100 PCS)Part No.10</td>
-        <td>0</td>
-        <td>24/9/2021</td>
-    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Andi</td><td>85</td></tr>
+    <tr><td>Budi</td><td>90</td></tr>
+    <tr><td>Citra</td><td>78</td></tr>
+    <tr><td>Dewi</td><td>92</td></tr>
+  </tbody>
 </table>
-<script>
-function searchTable() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const rows = document.querySelectorAll("#dataTable tbody tr");
 
-  rows.forEach(row => {
-    const rowText = row.textContent.toLowerCase();
-    row.style.display = rowText.includes(input) ? "" : "none";
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable();
   });
-}
 </script>
+
 </body>
 </html>
       </div>
