@@ -92,9 +92,30 @@
     <section id="Daily Activity">
       <div class="card">
         <h2>Daily Activity</h2>
-        <input type="text" id="searchInput" placeholder="Cari..." onkeyup="searchTable()">
+        <style>
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 300px;
+    }
 
-<table id="dataTable">
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    tr.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
   <table>
     <tr>
         <td>WE0041</td>
@@ -216,7 +237,7 @@
         <td>24/9/2021</td>
     </tr>
 </table>
-  <script>
+<script>
 function searchTable() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const rows = document.querySelectorAll("#dataTable tbody tr");
