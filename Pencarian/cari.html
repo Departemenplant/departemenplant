@@ -8,8 +8,39 @@
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-<input type="search" id="searchInput" placeholder="Cari...">
-<button onclick="cariData()">Cari</button>
+    function cariData() {
+        const kataKunci = document.getElementById('searchInput').value;
+        const data = [
+            { nama: 'Buku', kategori: 'Bacaan' },
+            { nama: 'Pensil', kategori: 'Alat Tulis' },
+            { nama: 'Penggaris', kategori: 'Alat Tulis' }
+        ];
+        let hasilPencarian = [];
+
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].nama.toLowerCase().includes(kataKunci.toLowerCase()) || data[i].kategori.toLowerCase().includes(kataKunci.toLowerCase())) {
+                hasilPencarian.push(data[i]);
+            }
+        }
+
+        tampilkanHasil(hasilPencarian);
+    }
+
+    function tampilkanHasil(hasil) {
+        const hasilDiv = document.getElementById('searchResults');
+        hasilDiv.innerHTML = ''; // Kosongkan hasil sebelumnya
+
+        if (hasil.length === 0) {
+            hasilDiv.innerHTML = '<p>Tidak ada hasil ditemukan.</p>';
+            return;
+        }
+
+        for (let i = 0; i < hasil.length; i++) {
+            const item = document.createElement('p');
+            item.textContent = `${hasil[i].nama} - ${hasil[i].kategori}`;
+            hasilDiv.appendChild(item);
+        }
+    }
 <h2>Data Aset</h2>
 
 <table id="myTable" class="display">
